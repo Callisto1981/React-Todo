@@ -8,15 +8,34 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todo: ""
+      todo: "",
+      id: Date.now(),
+      did: false
     };
   }
 
-  addTodo = neItem => {
+  addTodo = newItem => {
     const newTodo = {
-      item: newItem
+      todo: newItem
     };
-    this.setState;
+    this.setState({
+      todo: [...this.state.todo, newTodo]
+    });
+  };
+
+  toggleItem = () => {
+    this.setState({
+      todo: this.state.todo.map(item => {
+        if (item.id === itemId) {
+          return {
+            ...item,
+            did: !item.did
+          };
+        } else {
+          return item;
+        }
+      })
+    });
   };
 
   render() {
